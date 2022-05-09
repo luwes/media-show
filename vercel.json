@@ -1,0 +1,6 @@
+{
+  "redirects": [
+    { "source": "/node_modules/:match*", "destination": "https://cdn.jsdelivr.net/npm/:match*" },
+    { "source": "/src/index.js", "destination": "/dist/index.js" }
+  ]
+}
