@@ -81,7 +81,7 @@ const includedAttrs = Array.from(mediaTemplate?.attributes ?? [])
   .map((prop) => `media-${kebabCase(prop)}`);
 
 class MsSizes extends MsBaseElement {
-  static observedAttributes = ['sizes', ...includedAttrs];
+  static observedAttributes = ['media-show', 'sizes', ...includedAttrs];
 
   constructor() {
     super();

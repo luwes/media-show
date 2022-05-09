@@ -2,6 +2,7 @@ import { MsBaseElement } from './base-element.js';
 import {
   closestComposedNode,
   camelCase,
+  kebabCase,
   serializeTimeRanges,
   toQuery,
   getParams,
@@ -86,7 +87,6 @@ class MediaShow extends MsBaseElement {
   constructor() {
     super();
     this.attachShadow({ mode: 'open' });
-
     this.render();
 
     const { media } = this;
@@ -181,15 +181,17 @@ class MediaShow extends MsBaseElement {
 
 function updateMediaState({ type, target }) {
   // Destructure event.target in the throttled function, event.target becomes null.
-  propogatemediaAttrs({ type, target });
+  throttledpropogateMediaAttrs({ type, target });
   throttledUpdateUrlState({ type, target });
 }
 
+const throttledpropogateMediaAttrs = throttle(propogateMediaAttrs, 333);
+
 /**
- * Propagates media attributes to all children that start with the ms- prefix
+ * Propagates media attributes to all children that observe media-show
  * and have the attribute in their observedAttributes.
  */
-function propogatemediaAttrs({ type, target }) {
+function propogateMediaAttrs({ type, target }) {
   // Filter some attributes to not over tax setting attributes in the loop below.
   const attrFilter = {
     timeupdate: 'current-time',
@@ -201,8 +203,8 @@ function propogatemediaAttrs({ type, target }) {
   [...showcase.querySelectorAll('*')]
     .filter(
       (child) =>
-        child.localName.startsWith('ms-') &&
-        child.constructor.observedAttributes?.length
+        child.constructor.observedAttributes?.length &&
+        child.constructor.observedAttributes.includes('media-show')
     )
     .forEach((msChild) =>
       getStateAttrs(showcase, mediaAttrs)
@@ -210,9 +212,32 @@ function propogatemediaAttrs({ type, target }) {
         .forEach((attr) => {
           const propName = camelCase(attr);
           const mediaValue = showcase.media[propName];
-          propogateMediaAttribute(msChild, `media-${attr}`, mediaValue);
+
+          // Might be too brittle, filter on `name` and `observe` attribute.
+          if (
+            !msChild.name ||
+            msChild.name === attr ||
+            kebabCase(msChild.name) === attr ||
+            msChild.getAttribute('observe')?.split(' ').includes(attr)
+          ) {
+            propogateMediaAttribute(msChild, `media-${attr}`, mediaValue);
+          }
         })
     );
+}
+
+function propogateMediaAttribute(el, name, value) {
+  if (value instanceof TimeRanges) {
+    value = serializeTimeRanges(value);
+    if (!value) return;
+  }
+  if (
+    el.constructor.observedAttributes?.includes(name) &&
+    el.getAttribute(name) !== String(value)
+  ) {
+    if (value == null || value === false) el.removeAttribute(name);
+    else el.setAttribute(name, value === true ? '' : value);
+  }
 }
 
 const throttledUpdateUrlState = throttle(updateUrlState, 333);
@@ -247,20 +272,6 @@ function updateUrlState({ type, target }) {
       url.search = search;
       history.pushState({}, '', url);
     });
-}
-
-function propogateMediaAttribute(el, name, value) {
-  if (value instanceof TimeRanges) {
-    value = serializeTimeRanges(value);
-    if (!value) return;
-  }
-  if (
-    el.constructor.observedAttributes?.includes(name) &&
-    el.getAttribute(name) !== String(value)
-  ) {
-    if (value == null || value === false) el.removeAttribute(name);
-    else el.setAttribute(name, value === true ? '' : value);
-  }
 }
 
 if (!customElements.get('media-show')) {

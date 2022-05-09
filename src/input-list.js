@@ -53,6 +53,8 @@ const template = (props) => html`
 `;
 
 class MsInputList extends MsBaseElement {
+  static observedAttributes = ['media-show'];
+
   constructor() {
     super();
     this.attachShadow({ mode: 'open' });

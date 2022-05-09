@@ -63,12 +63,18 @@
       ms-input-list {
         display: block;
       }
+
+      media-prop,
+      media-checkbox {
+        display: block;
+      }
     </style>
     <script type="module" src="/node_modules/@mux-elements/mux-player/dist/mux-player.mjs"></script>
     <script type="module" src="./src/media-show.js"></script>
+    <script type="module" src="./src/media-prop.js"></script>
+    <script type="module" src="./src/media-checkbox.js"></script>
     <script type="module" src="./src/split-panel.js"></script>
     <script type="module" src="./src/sizes.js"></script>
-    <script type="module" src="./src/state.js"></script>
     <script type="module" src="./src/input-list.js"></script>
   </head>
   <body>
@@ -98,7 +104,21 @@
           ></mux-player>
         </ms-sizes>
         <ms-split-panel id="x2" position="40" snap="40%" slot="end">
-          <ms-state slot="start"></ms-state>
+          <div slot="start" style="padding: 1rem;">
+            <media-checkbox name="autoplay"></media-checkbox>
+            <media-checkbox name="muted"></media-checkbox>
+            <media-checkbox name="loop"></media-checkbox>
+            <media-checkbox name="controls"></media-checkbox>
+            <media-prop type="bool" name="paused"></media-prop>
+            <media-prop name="readyState"></media-prop>
+            <media-prop name="volume"></media-prop>
+            <media-prop type="buffered" name="buffered" observe="duration"></media-prop>
+            <media-prop type="time" name="duration"></media-prop>
+            <media-prop type="time" name="currentTime"></media-prop>
+            <media-prop type="bool" name="ended"></media-prop>
+            <media-prop type="quality" name="videoHeight" label="quality"></media-prop>
+            <media-prop name="playbackRate" label="rate"></media-prop>
+          </div>
           <div slot="end" style="padding: 1rem;">
             <ms-input-list src="/media-assets.json" placeholder="Enter new source URL"></ms-input-list>
           </div>

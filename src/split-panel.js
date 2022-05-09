@@ -25,7 +25,7 @@ const template = (props) => html`
 `;
 
 class MsSplitPanel extends MsBaseElement {
-  static observedAttributes = ['position'];
+  static observedAttributes = ['media-show', 'position'];
 
   constructor() {
     super();
