@@ -67,9 +67,9 @@ const template = (props) => {
     `))}`;
 };
 
-// Warning: assuming there is just 1 instance of media-showcase.
+// Warning: assuming there is just 1 instance of media-show.
 const mediaTemplate = (
-  document.querySelector('media-showcase template') ?? defaultMediaTemplate
+  document.querySelector('media-show template') ?? defaultMediaTemplate
 )?.content.firstElementChild.cloneNode(true);
 
 const includedAttrs = Array.from(mediaTemplate?.attributes ?? [])

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Media Showcase</title>
+    <title>Media Show</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link
       rel="stylesheet"
@@ -65,14 +65,14 @@
       }
     </style>
     <script type="module" src="/node_modules/@mux-elements/mux-player/dist/mux-player.mjs"></script>
-    <script type="module" src="./src/media-showcase.js"></script>
+    <script type="module" src="./src/media-show.js"></script>
     <script type="module" src="./src/split-panel.js"></script>
     <script type="module" src="./src/sizes.js"></script>
     <script type="module" src="./src/state.js"></script>
     <script type="module" src="./src/input-list.js"></script>
   </head>
   <body>
-    <media-showcase exclude-attrs="src">
+    <media-show exclude-attrs="src">
       <ms-split-panel id="x1" position="56" snap="56%">
         <ms-sizes sizes="100% 65% 35% 25%" slot="start">
           <template>
@@ -104,6 +104,6 @@
           </div>
         </ms-split-panel>
       </ms-split-panel>
-    </media-showcase>
+    </media-show>
   </body>
 </html>

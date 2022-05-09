@@ -1,12 +1,12 @@
-# Media Showcase
+# Media Show
 
 Showcase your media player in style!
 
 
 ```html
-<script type="module" src="https://unpkg.com/luwes/media-showcase"></script>
+<script type="module" src="https://unpkg.com/luwes/media-show"></script>
 
-<media-showcase>
+<media-show>
   <video
     slot="media"
     src="https://stream.mux.com/O6LdRc0112FEJXH00bGsN9Q31yu5EIVHTgjTKRkKtEq1k/high.mp4"
@@ -20,5 +20,5 @@ Showcase your media player in style!
       src="https://image.mux.com/O6LdRc0112FEJXH00bGsN9Q31yu5EIVHTgjTKRkKtEq1k/storyboard.vtt"
     />
   </video>
-</media-showcase>
+</media-show>
 ```

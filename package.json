@@ -1,5 +1,5 @@
 {
-  "name": "media-showcase",
+  "name": "media-show",
   "version": "0.0.1",
   "type": "module",
   "description": "Showcase your media player in style!",
@@ -10,21 +10,21 @@
     "web component",
     "custom element"
   ],
-  "homepage": "https://github.com/luwes/media-showcase#readme",
+  "homepage": "https://github.com/luwes/media-show#readme",
   "bugs": {
-    "url": "https://github.com/luwes/media-showcase/issues"
+    "url": "https://github.com/luwes/media-show/issues"
   },
-  "main": "dist/media-showcase.js",
+  "main": "dist/media-show.js",
   "files": [
     "src",
     "dist"
   ],
-  "repository": "luwes/media-showcase",
+  "repository": "luwes/media-show",
   "author": "Wesley Luyten <me@wesleyluyten.com> (https://wesleyluyten.com)",
   "license": "MIT",
   "scripts": {
     "dev": "web-dev-server",
-    "build": "esbuild src/media-showcase.js --bundle --outdir=dist --sourcemap  --minify --loader:.html=text --loader:.css=text",
+    "build": "esbuild src/media-show.js --bundle --outdir=dist --sourcemap  --minify --loader:.html=text --loader:.css=text",
     "prepublishOnly": "yarn build"
   },
   "prettier": {

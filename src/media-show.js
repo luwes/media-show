@@ -82,7 +82,7 @@ const getStateAttrs = (el, baseAttrs = []) => {
 
 const cleanups = new WeakMap();
 
-class MediaShowcase extends MsBaseElement {
+class MediaShow extends MsBaseElement {
   constructor() {
     super();
     this.attachShadow({ mode: 'open' });
@@ -197,7 +197,7 @@ function propogatemediaAttrs({ type, target }) {
     volumechange: ['volume', 'muted'],
   }[type];
 
-  const showcase = closestComposedNode('media-showcase', target);
+  const showcase = closestComposedNode('media-show', target);
   [...showcase.querySelectorAll('*')]
     .filter(
       (child) =>
@@ -225,7 +225,7 @@ function updateUrlState({ type, target }) {
     volumechange: ['volume', 'muted'],
   }[type];
 
-  const showcase = closestComposedNode('media-showcase', target);
+  const showcase = closestComposedNode('media-show', target);
   getStateAttrs(showcase, urlStateAttrs)
     .filter((attr) => !attrFilter || attrFilter.includes(attr))
     .forEach((attr) => {
@@ -263,8 +263,8 @@ function propogateMediaAttribute(el, name, value) {
   }
 }
 
-if (!customElements.get('media-showcase')) {
-  customElements.define('media-showcase', MediaShowcase);
+if (!customElements.get('media-show')) {
+  customElements.define('media-show', MediaShow);
 }
 
-export default MediaShowcase;
+export default MediaShow;
