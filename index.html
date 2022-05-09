@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Media Showcase</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      media="(prefers-color-scheme:light)"
+      href="/node_modules/@shoelace-style/shoelace/dist/themes/light.css"
+    />
+    <link
+      rel="stylesheet"
+      media="(prefers-color-scheme:dark)"
+      href="/node_modules/@shoelace-style/shoelace/dist/themes/dark.css"
+      onload="document.documentElement.classList.add('sl-theme-dark');"
+    />
+    <style>
+      :not(:defined) {
+        display: none;
+      }
+
+      html {
+        box-sizing: border-box;
+      }
+
+      *,
+      *:before,
+      *:after {
+        box-sizing: inherit;
+      }
+
+      body {
+        margin: 0;
+        font-family: var(--sl-font-sans);
+        font-size: var(--sl-font-size-medium);
+        font-weight: var(--sl-font-weight-normal);
+        letter-spacing: var(--sl-letter-spacing-normal);
+        background-color: var(--sl-color-neutral-0);
+        color: var(--sl-color-neutral-900);
+        line-height: var(--sl-line-height-normal);
+      }
+
+      a {
+        color: var(--sl-color-primary-600);
+      }
+
+      a:hover {
+        color: var(--sl-color-primary-700);
+      }
+
+      strong {
+        font-weight: var(--sl-font-weight-bold);
+      }
+
+      ms-sizes {
+        padding: .5rem;
+      }
+
+      ms-state {
+        padding: 1rem;
+      }
+
+      ms-input-list {
+        display: block;
+      }
+    </style>
+    <script type="module" src="/node_modules/@mux-elements/mux-player/dist/mux-player.mjs"></script>
+    <script type="module" src="./src/media-showcase.js"></script>
+    <script type="module" src="./src/split-panel.js"></script>
+    <script type="module" src="./src/sizes.js"></script>
+    <script type="module" src="./src/state.js"></script>
+    <script type="module" src="./src/input-list.js"></script>
+  </head>
+  <body>
+    <media-showcase exclude-attrs="src">
+      <ms-split-panel id="x1" position="56" snap="56%">
+        <ms-sizes sizes="100% 65% 35% 25%" slot="start">
+          <template>
+            <mux-player
+              preload="{{preload}}"
+              autoplay="{{autoplay}}"
+              muted="{{muted}}"
+              loop="{{loop}}"
+              start-time="{{currentTime}}"
+              stream-type="{{streamType}}"
+              playback-id="{{playbackId}}"
+              playback-token="{{playbackToken}}"
+              thumbnail-token="{{thumbnailToken}}"
+              storyboard-token="{{storyboardToken}}"
+              primary-color="{{primaryColor}}"
+              secondary-color="{{secondaryColor}}"
+            ></mux-player>
+          </template>
+          <mux-player
+            slot="media"
+            stream-type="on-demand"
+            playback-id="a4nOgmxGWg6gULfcBbAa00gXyfcwPnAFldF8RdsNyk8M"
+          ></mux-player>
+        </ms-sizes>
+        <ms-split-panel id="x2" position="40" snap="40%" slot="end">
+          <ms-state slot="start"></ms-state>
+          <div slot="end" style="padding: 1rem;">
+            <ms-input-list src="/media-assets.json" placeholder="Enter new source URL"></ms-input-list>
+          </div>
+        </ms-split-panel>
+      </ms-split-panel>
+    </media-showcase>
+  </body>
+</html>
