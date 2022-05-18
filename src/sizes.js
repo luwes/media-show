@@ -163,4 +163,4 @@ if (!customElements.get('ms-sizes')) {
   customElements.define('ms-sizes', MsSizes);
 }
 
-export default MsSizes;
+export { MsSizes };

@@ -6,12 +6,12 @@
     <link
       rel="stylesheet"
       media="(prefers-color-scheme:light)"
-      href="/node_modules/@shoelace-style/shoelace/dist/themes/light.css"
+      href="./node_modules/@shoelace-style/shoelace/dist/themes/light.css"
     />
     <link
       rel="stylesheet"
       media="(prefers-color-scheme:dark)"
-      href="/node_modules/@shoelace-style/shoelace/dist/themes/dark.css"
+      href="./node_modules/@shoelace-style/shoelace/dist/themes/dark.css"
       onload="document.documentElement.classList.add('sl-theme-dark');"
     />
     <style>
@@ -69,13 +69,8 @@
         display: block;
       }
     </style>
-    <script type="module" src="/node_modules/@mux-elements/mux-player/dist/mux-player.mjs"></script>
-    <script type="module" src="./src/media-show.js"></script>
-    <script type="module" src="./src/media-prop.js"></script>
-    <script type="module" src="./src/media-checkbox.js"></script>
-    <script type="module" src="./src/split-panel.js"></script>
-    <script type="module" src="./src/sizes.js"></script>
-    <script type="module" src="./src/input-list.js"></script>
+    <script type="module" src="./node_modules/@mux-elements/mux-player/dist/mux-player.mjs"></script>
+    <script type="module" src="./src/index.js"></script>
   </head>
   <body>
     <media-show exclude-attrs="src">

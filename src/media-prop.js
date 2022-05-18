@@ -116,4 +116,4 @@ if (!customElements.get('media-prop')) {
   customElements.define('media-prop', MediaProp);
 }
 
-export default MediaProp;
+export { MediaProp };

@@ -289,4 +289,4 @@ if (!customElements.get('media-show')) {
   customElements.define('media-show', MediaShow);
 }
 
-export default MediaShow;
+export { MediaShow };

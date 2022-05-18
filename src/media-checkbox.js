@@ -1,5 +1,5 @@
 import '/node_modules/@shoelace-style/shoelace/dist/components/checkbox/checkbox.js';
-import MediaProp from './media-prop.js';
+import { MediaProp } from './media-prop.js';
 import { html } from './html.js';
 
 // prettier-ignore
@@ -38,4 +38,4 @@ if (!customElements.get('media-checkbox')) {
   customElements.define('media-checkbox', MediaCheckbox);
 }
 
-export default MediaCheckbox;
+export { MediaCheckbox };

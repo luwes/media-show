@@ -81,4 +81,4 @@ if (!customElements.get('ms-split-panel')) {
   customElements.define('ms-split-panel', MsSplitPanel);
 }
 
-export default MsSplitPanel;
+export { MsSplitPanel };

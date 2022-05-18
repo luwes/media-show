@@ -200,4 +200,4 @@ if (!customElements.get('ms-input-list')) {
   customElements.define('ms-input-list', MsInputList);
 }
 
-export default MsInputList;
+export { MsInputList };
