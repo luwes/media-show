@@ -16,13 +16,16 @@
   },
   "main": "src/index.js",
   "files": [
-    "src"
+    "src",
+    "dist"
   ],
   "repository": "luwes/media-show",
   "author": "Wesley Luyten <me@wesleyluyten.com> (https://wesleyluyten.com)",
   "license": "MIT",
   "scripts": {
-    "dev": "web-dev-server"
+    "dev": "web-dev-server",
+    "build": "esbuild src/index.js --bundle --outdir=dist --sourcemap --minify ",
+    "prepublishOnly": "npm run build"
   },
   "prettier": {
     "tabWidth": 2,
@@ -49,6 +52,7 @@
     "@rollup/pluginutils": "^4.2.1",
     "@web/dev-server": "^0.1.30",
     "@web/dev-server-rollup": "^0.3.15",
+    "esbuild": "^0.14.39",
     "eslint": "^8.12.0",
     "prettier": "^2.6.1"
   },

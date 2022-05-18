@@ -1,16 +1,16 @@
-import '/node_modules/@shoelace-style/shoelace/dist/components/input/input.js';
-import '/node_modules/@shoelace-style/shoelace/dist/components/dropdown/dropdown.js';
-import '/node_modules/@shoelace-style/shoelace/dist/components/menu/menu.js';
-import '/node_modules/@shoelace-style/shoelace/dist/components/menu-item/menu-item.js';
-import '/node_modules/@shoelace-style/shoelace/dist/components/icon-button/icon-button.js';
-import { registerIconLibrary } from '/node_modules/@shoelace-style/shoelace/dist/utilities/icon-library.js';
+import '../node_modules/@shoelace-style/shoelace/dist/components/input/input.js';
+import '../node_modules/@shoelace-style/shoelace/dist/components/dropdown/dropdown.js';
+import '../node_modules/@shoelace-style/shoelace/dist/components/menu/menu.js';
+import '../node_modules/@shoelace-style/shoelace/dist/components/menu-item/menu-item.js';
+import '../node_modules/@shoelace-style/shoelace/dist/components/icon-button/icon-button.js';
+import { registerIconLibrary } from '../node_modules/@shoelace-style/shoelace/dist/utilities/icon-library.js';
 import { MsBaseElement } from './base-element.js';
 import { html, css, render, unsafeHTML } from './html.js';
 import { escapeRegExp } from './utils.js';
 
 registerIconLibrary('default', {
   resolver: (name) =>
-    `/node_modules/@shoelace-style/shoelace/dist/assets/icons/${name}.svg`,
+    `../node_modules/@shoelace-style/shoelace/dist/assets/icons/${name}.svg`,
 });
 
 const styles = () => css`

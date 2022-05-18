@@ -1,4 +1,4 @@
-import '/node_modules/@shoelace-style/shoelace/dist/components/checkbox/checkbox.js';
+import '../node_modules/@shoelace-style/shoelace/dist/components/checkbox/checkbox.js';
 import { MediaProp } from './media-prop.js';
 import { html } from './html.js';
 

@@ -1,4 +1,4 @@
-import '/node_modules/@shoelace-style/shoelace/dist/components/split-panel/split-panel.js';
+import '../node_modules/@shoelace-style/shoelace/dist/components/split-panel/split-panel.js';
 import { MsBaseElement } from './base-element.js';
 import { html, css, render } from './html.js';
 import { toQuery, getParams, getParam, round, debounce } from './utils.js';
