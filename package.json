@@ -44,6 +44,7 @@
     }
   },
   "devDependencies": {
+    "@mux-elements/mux-player": "^0.1.0-beta.12",
     "@open-wc/dev-server-hmr": "^0.1.2",
     "@rollup/pluginutils": "^4.2.1",
     "@web/dev-server": "^0.1.30",
@@ -52,7 +53,6 @@
     "prettier": "^2.6.1"
   },
   "dependencies": {
-    "@mux-elements/mux-player": "0.1.0-beta.11",
     "@github/template-parts": "0.5.3",
     "@shoelace-style/shoelace": "2.0.0-beta.73"
   }
