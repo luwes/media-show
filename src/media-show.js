@@ -64,6 +64,8 @@ const mediaEvents = [
   'ended',
   'error',
   'loadstart',
+  'loadedmetadata',
+  'resize',
   'pause',
   'play',
   'playing',
@@ -151,6 +153,10 @@ class MediaShow extends MsBaseElement {
     });
   }
 
+  connectedCallback() {
+    updateMediaState({ target: this });
+  }
+
   get templateAttrs() {
     const template =
       this.querySelector('template')?.content.firstElementChild.cloneNode(true);
@@ -181,17 +187,17 @@ class MediaShow extends MsBaseElement {
 
 function updateMediaState({ type, target }) {
   // Destructure event.target in the throttled function, event.target becomes null.
-  throttledpropogateMediaAttrs({ type, target });
+  throttledPropogateMediaAttrs({ type, target });
   throttledUpdateUrlState({ type, target });
 }
 
-const throttledpropogateMediaAttrs = throttle(propogateMediaAttrs, 333);
+const throttledPropogateMediaAttrs = throttle(propogateMediaAttrs, 333);
 
 /**
  * Propagates media attributes to all children that observe media-show
  * and have the attribute in their observedAttributes.
  */
-function propogateMediaAttrs({ type, target }) {
+async function propogateMediaAttrs({ type, target }) {
   // Filter some attributes to not over tax setting attributes in the loop below.
   const attrFilter = {
     timeupdate: 'current-time',
@@ -200,6 +206,11 @@ function propogateMediaAttrs({ type, target }) {
   }[type];
 
   const showcase = closestComposedNode('media-show', target);
+
+  await Promise.all([...showcase.querySelectorAll('*')]
+    .filter((child) => child.localName.includes('-'))
+    .map((child) => customElements.whenDefined(child.localName)));
+
   [...showcase.querySelectorAll('*')]
     .filter(
       (child) =>

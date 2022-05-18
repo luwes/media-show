@@ -3,7 +3,7 @@ import {
   NodeTemplatePart,
   createProcessor,
   AttributeTemplatePart,
-} from '@github/template-parts';
+} from '/node_modules/@github/template-parts/lib/index.js';
 
 export function css(strings, ...values) {
   return values.reduce((finalString, value, index) => {

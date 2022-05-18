@@ -41,6 +41,7 @@ const styles = (props) => css`
 const defaultMediaTemplate = document.createElement('template');
 defaultMediaTemplate.innerHTML = `
   <video
+    slot="media"
     src="{{src}}"
     poster="{{poster}}"
     controls="{{controls}}"
@@ -59,6 +60,7 @@ const template = (props) => {
     </style>
     <div class="size-${props.sizes[0]}">
       <slot name="media"></slot>
+      <slot></slot>
     </div>
     ${unsafeStatic(...props.sizes.slice(1).map((size, i) => html`
       <div class="size-${size}">
@@ -70,9 +72,11 @@ const template = (props) => {
 // Warning: assuming there is just 1 instance of media-show.
 const mediaTemplate = (
   document.querySelector('media-show template') ?? defaultMediaTemplate
-)?.content.firstElementChild.cloneNode(true);
+)?.content.cloneNode(true);
 
-const includedAttrs = Array.from(mediaTemplate?.attributes ?? [])
+const includedAttrs = Array.from(
+  mediaTemplate?.querySelector('[slot=media]').attributes ?? []
+)
   .map(({ value }) => {
     const propMatches = value.match(/\{\{\s*(\w*?)\s*\}\}/);
     return propMatches && propMatches[1];
@@ -113,7 +117,7 @@ class MsSizes extends MsBaseElement {
 
   get templateAttrNodes() {
     return Array.from(
-      this.template?.content.firstElementChild.attributes ?? []
+      this.template?.content.querySelector('[slot=media]').attributes ?? []
     );
   }
 
